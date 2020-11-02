@@ -1,0 +1,28 @@
+<nav class="main navbar navbar-dark bg-secondary">
+  <span class="navbar-title">Encounter Builder</span>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="main-nav" style="">
+    <ul class="navbar-nav mr-auto">
+      <% if logged_in? %>
+        <li class="nav-item">
+          <a>My Account</a>
+        </li>
+        <li class="nav-item">
+          <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+            <%= submit_tag 'Logout'%>
+          <% end %>
+        </li>
+      <% else %>
+      <li class="nav-item">
+          <%= link_to 'Create Account', new_user_path %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Login', login_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

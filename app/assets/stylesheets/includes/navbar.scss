@@ -1,0 +1,33 @@
+.navbar {
+    .navbar-title {
+        font-size: 1.5em;
+        font-weight: secondaryFontWeight;
+        color: $secondaryFontColor;
+        @media all and (min-width: $lrg) {
+            font-size: 2em;
+        }
+    }
+}
+
+.navbar.main {
+    background-color: $secondaryColor !important;
+    .navbar-nav {
+        margin: 20px 0;
+    }
+    .nav-item {
+        color: $secondaryFontColor;
+        padding: 10px 0;
+        border-top: 1px solid white;
+        &:last-child {
+            border-bottom: 1px solid white;
+        }
+    }
+}
+
+.navbar.secondary {
+    .navbar-nav {
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        width: 100%;
+    }
+}

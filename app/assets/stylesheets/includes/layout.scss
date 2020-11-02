@@ -1,0 +1,24 @@
+// Containers
+section.container-fluid {
+    margin-top: 20px;
+}
+
+// Forms
+.form-group {
+    input {
+        margin-bottom: 10px;
+    }
+}
+
+// Buttons
+.btn-primary {
+    background-color: $primaryColor !important;
+    border-color: $primaryColor !important;
+}
+
+.btn {
+    &:hover {
+        transition: opacity 500ms ease-in-out;
+        opacity: 95%;
+    }
+}
