@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :controller do
   describe 'it handles user session management' do
     before do
-      @user = FactoryBot.build(:user)
+      @user = FactoryBot.create(:user)
       @user_params = { email: @user.email, password: @user.password }
     end
 
@@ -17,6 +17,7 @@ RSpec.describe SessionsController, type: :controller do
     describe '#create' do
       it 'logs you in with valid credentials' do
         post :create, params: @user_params
+        expect(session[:user_id]).not_to eq(nil)
         expect(session[:user_id]).to equal(@user.id)
       end
 
@@ -26,6 +27,15 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     describe '#destroy' do
+      before(:each) do
+        post :create, params: @user_params
+      end
+
+      it 'removes your session' do
+        post :destroy
+        expect(session[:user_id]).to eq(nil)
+      end
+
       it 'logs you out of the systen' do
         post :destroy
         expect(response).to redirect_to(login_path)
