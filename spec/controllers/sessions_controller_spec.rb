@@ -36,7 +36,7 @@ RSpec.describe SessionsController, type: :controller do
         expect(session[:user_id]).to eq(nil)
       end
 
-      it 'logs you out of the systen' do
+      it 'redirects you to the login page after logout' do
         post :destroy
         expect(response).to redirect_to(login_path)
       end
