@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  describe 'it handles user session management' do
+  describe 'handles user session management' do
     before do
       @user = FactoryBot.create(:user)
       @user_params = { email: @user.email, password: @user.password }
