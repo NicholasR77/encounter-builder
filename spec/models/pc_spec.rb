@@ -10,7 +10,7 @@ RSpec.describe Pc, type: :model do
   end
   
   it 'is not valid without a name' do
-    @npc.name = nil
+    @pc.name = nil
     expect(@pc).not_to be_valid
   end
 end

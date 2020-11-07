@@ -1,6 +1,6 @@
-require 'rails-helper'
+require 'rails_helper'
 
-Rspec.describe NpcsController, type: controller do
+RSpec.describe NpcsController, type: :controller do
   describe 'handles the management of NPCs' do
     before do
       @npc = FactoryBot.build(:npc)

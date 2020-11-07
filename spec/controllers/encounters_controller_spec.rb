@@ -1,6 +1,6 @@
-require 'rails-helper'
+require 'rails_helper'
 
-Rspec.describe EncountersController, type: controller do
+RSpec.describe EncountersController, type: :controller do
   describe 'handles the management of encounter' do
     before do
       @encounter = FactoryBot.build(:encounter)

@@ -1,6 +1,6 @@
-require 'rails-helper'
+require 'rails_helper'
 
-Rspec.describe PcsController, type: controller do
+RSpec.describe PcsController, type: :controller do
   describe 'handles the management of PCs' do
     before do
       @pc = FactoryBot.build(:pc)

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pages#home'
   resources :pcs
   resources :npcs
   resources :encounters
