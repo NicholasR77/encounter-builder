@@ -16,7 +16,7 @@ RSpec.describe NpcsController, type: :controller do
     end
 
     describe '#new' do
-    
+      
     end
 
     describe '#create' do
