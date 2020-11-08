@@ -9,22 +9,12 @@ RSpec.describe User, type: :model do
     expect(@user).to be_valid
   end
 
-  it 'is not valid without a first name' do
-    @user.first_name = nil
-    expect(@user).not_to be_valid
-  end
-
-  it 'is not valid without a last name' do
-    @user.last_name = nil
-    expect(@user).not_to be_valid
-  end
-
   it 'is not valid without an email' do
     @user.email = nil
     expect(@user).not_to be_valid
   end
 
-  it 'is not valid without an email' do
+  it 'is not valid without a password' do
     @user.password = nil
     expect(@user).not_to be_valid
   end
