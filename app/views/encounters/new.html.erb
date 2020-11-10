@@ -1,9 +1,1 @@
-<%= form_for @encounter do |f| %>
-    <%= f.label :name, "Name:" %>
-    <%= f.text_field :name, class: "form-control" %>
-
-    <%= f.label :description, "Descripion" %>
-    <%= f.text_area :description, class: "form-control" %>
-
-    <%= f.submit 'Create Encounter', class: "btn btn-primary" %>
-<% end %>
+<%= render 'encounter_form' %>

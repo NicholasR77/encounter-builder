@@ -1,4 +1,4 @@
 <% @encounters.each do |encounter| %>
-  <h3><%= encounter.name %></h3>
+  <h3><%= link_to  encounter.name, encounter_path(encounter) %></h3>
   <p><%= encounter.description %></p>
 <% end %>

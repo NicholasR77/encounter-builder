@@ -3,6 +3,10 @@ class EncountersController < ApplicationController
     @encounters = Encounter.all
   end
 
+  def show
+    @encounter = Encounter.find(params[:id])
+  end
+
   def new
     @encounter = Encounter.new
   end
@@ -14,6 +18,12 @@ class EncountersController < ApplicationController
     else
       new_encounter_path
     end
+  end
+
+  def destroy
+    encounter = Encounter.find(params[:id])
+    encounter.destroy
+    redirect_to encounters_path
   end
 
   protected
