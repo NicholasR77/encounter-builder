@@ -71,6 +71,14 @@ RSpec.describe EncountersController, type: :controller do
       end
     end
 
+    describe '#update' do
+      it 'updates an existing ancounter' do
+        update_encounter_params = FactoryBot.attributes_for(:encounter, name: 'New Name')
+        patch :update, params: { id: @encounter.id, encounter: update_encounter_params }
+        expect(@encounter.reload.name).to eq('New Name')
+      end
+    end
+
     describe '#delete' do
       it 'deletes the encounter' do
         expect{ delete_encounter }. to change(Encounter.all, :count).by(-1)
