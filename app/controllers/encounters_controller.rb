@@ -20,6 +20,19 @@ class EncountersController < ApplicationController
     end
   end
 
+  def edit
+    @encounter = Encounter.find(params[:id])
+  end
+
+  def update
+    encounter = Encounter.find(params[:id])
+    if encounter.update(encounter_params)
+      redirect_to encounter_path(encounter)
+    else
+      redirect_to edit_encounter_path(encounter)
+    end
+  end
+
   def destroy
     encounter = Encounter.find(params[:id])
     encounter.destroy

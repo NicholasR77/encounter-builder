@@ -15,6 +15,10 @@ RSpec.describe EncountersController, type: :controller do
       get :show, params: { id: @encounter.id  }
     end
 
+    def edit_encounter
+      get :edit, params: { id: @encounter.id }
+    end
+
     def delete_encounter
       delete :destroy, params: { id: @encounter.id }
     end
@@ -68,6 +72,18 @@ RSpec.describe EncountersController, type: :controller do
       it 'redirects to the show page' do
         create_encounter
         expect(response).to redirect_to encounter_path(Encounter.last)
+      end
+    end
+
+    describe '#edit' do
+      it 'returns a succesful response' do
+        edit_encounter
+        expect(response).to have_http_status(:ok)
+      end
+
+      it 'renders the edit template' do
+        edit_encounter
+        expect(response).to render_template(:edit)
       end
     end
 
