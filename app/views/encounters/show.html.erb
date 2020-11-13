@@ -1,4 +1,4 @@
 <h2>Name: <%= @encounter.name %></h2>
 <p>Description: <%= @encounter.description %></p>
-<%= button_to "Edit Encounter", encounter_path(@encounter), method: :upd, class: "btn btn-primary",  data: { confirm: "Are you sure?" } %>
-<%= button_to "Delete Encounter", encounter_path(@encounter), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure?" } %>
+<%= button_to "Edit Encounter", edit_encounter_path(@encounter), method: :get, class: "btn btn-primary" %>
+<%= button_to "Delete Encounter", encounter_path(@encounter), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>

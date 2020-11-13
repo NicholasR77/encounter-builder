@@ -1,9 +1,18 @@
 <%= form_for @encounter do |f| %>
-    <%= f.label :name, "Name:" %>
+    <%= f.label :name, "Name" %>
     <%= f.text_field :name, class: "form-control" %>
 
     <%= f.label :description, "Descripion" %>
     <%= f.text_area :description, class: "form-control" %>
 
-    <%= f.submit 'Create Encounter', class: "btn btn-primary" %>
+    <%= f.collection_check_boxes :pc_ids, Pc.all, :id, :name do |pc_checkboxes| %>
+        <%= pc_checkboxes.check_box %>
+        <%= pc_checkboxes.label %>
+    <% end %>
+    <br>
+    <%= f.fields_for :pcs, @encounter.pcs.build do |pc_fields| %>
+        Name <%= pc_fields.text_field :name, class: "form-control"  %>
+    <% end %>
+
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>

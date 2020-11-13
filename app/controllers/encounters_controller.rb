@@ -42,6 +42,13 @@ class EncountersController < ApplicationController
   protected
 
   def encounter_params
-    params.require(:encounter).permit(:name, :description)
+    params.require(:encounter).permit(
+      :name,
+      :description,
+      pc_ids: [],
+      pcs_attributes: [:name],
+      npc_ids: [],
+      npcs_attributes: [:name]
+    )
   end
 end
