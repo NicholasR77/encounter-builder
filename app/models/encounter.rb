@@ -13,4 +13,11 @@ class Encounter < ApplicationRecord
       self.pcs << pc
     end
   end
+
+  def npcs_attributes=(npc_attributes)
+    npc_attributes.values.each do |npc_attribute|
+      npc = Npc.find_or_create_by(npc_attribute)
+      self.npcs << npc
+    end
+  end
 end

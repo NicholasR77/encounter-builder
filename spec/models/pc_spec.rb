@@ -8,9 +8,4 @@ RSpec.describe Pc, type: :model do
   it 'is valid with valid attributes' do
     expect(@pc).to be_valid
   end
-  
-  it 'is not valid without a name' do
-    @pc.name = nil
-    expect(@pc).not_to be_valid
-  end
 end
