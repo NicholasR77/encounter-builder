@@ -7,6 +7,10 @@ RSpec.describe UsersController, type: :controller do
       @user_params = FactoryBot.attributes_for(:user)
     end
 
+    def create_user
+      post :create, params: { user: @user_params }
+    end
+
     describe '#new' do
       it 'returns a succesful response' do
         get :new
@@ -21,16 +25,16 @@ RSpec.describe UsersController, type: :controller do
 
     describe '#create' do
       it 'creates a new user' do
-        expect { post :create, params: { user: @user_params } }.to change(User.all, :count).by(1)
+        expect{ create_user }.to change(User.all, :count).by(1)
       end
 
       it 'returns a 302 response' do
-        post :create, params: { user: @user_params }
+        create_user
         expect(response).to have_http_status(:found)
       end
 
       it 'redirects to the login page' do
-        post :create, params: { user: @user_params }
+        create_user
         expect(response).to redirect_to login_path
       end
     end

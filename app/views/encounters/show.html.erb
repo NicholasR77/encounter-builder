@@ -1,0 +1,50 @@
+<h2>Name: <%= @encounter.name %></h2>
+<p>Description: <%= @encounter.description %></p>
+<%# Add Averages %>
+
+
+<h2>PC's</h2>
+<div class="accordion" id="accordionPcEncounter">
+    <% @encounter.pcs.each do |pc| %>
+          <div class="card">
+            <div class="card-header" id="headingPc<%= pc.id %>">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePc<%= pc.id %>" aria-expanded="true" aria-controls="collapsePc<%= pc.id %>">
+                        <%= pc.name %>
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapsePc<%= pc.id %>" class="collapse" aria-labelledby="headingPc<%= pc.id %>" data-parent="#accordionPcEncounter">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div> 
+ 
+<h2>NPC's</h2>
+<div class="accordion" id="accordionNpcEncounter">
+    <% @encounter.npcs.each do |npc| %>
+          <div class="card">
+            <div class="card-header" id="headingNpc<%= npc.id %>">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseNpc<%= npc.id %>" aria-expanded="true" aria-controls="collapseNpc<%= npc.id %>">
+                        <%= npc.name %>
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseNpc<%= npc.id %>" class="collapse" aria-labelledby="headingNpc<%= npc.id %>" data-parent="#accordionNpcEncounter">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div> 
+
+
+<%= button_to "Edit Encounter", edit_encounter_path(@encounter), method: :get, class: "btn btn-primary" %>
+<%= button_to "Delete Encounter", encounter_path(@encounter), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
