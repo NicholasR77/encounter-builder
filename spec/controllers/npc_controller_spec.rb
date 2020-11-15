@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe NpcsController, type: :controller do
   describe 'handles the management of NPCs' do
     before do
+      allow(controller).to receive(:logged_in_user).and_return(true)
       @npc = FactoryBot.build(:npc)
       @npc_params = FactoryBot.attributes_for(:npc)
     end
@@ -16,7 +17,7 @@ RSpec.describe NpcsController, type: :controller do
     end
 
     describe '#new' do
-    
+      
     end
 
     describe '#create' do

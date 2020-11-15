@@ -6,9 +6,9 @@
             Menu
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Encounters</a>
-            <a class="dropdown-item" href="#">PC's</a>
-            <a class="dropdown-item" href="#">NPC's</a>
+            <%= link_to  "Encounters", encounters_path, class: "dropdown-item" %>
+            <%= link_to  "PC's", pcs_path, class: "dropdown-item" %>
+            <%= link_to  "NPC's", npcs_path, class: "dropdown-item" %>
           </div>
         </div>
       </li>

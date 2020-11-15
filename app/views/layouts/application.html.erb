@@ -13,14 +13,19 @@
 
   <body>
     <% if logged_in? %>
-      <%= render 'partials/main_navbar' %>
-      <%= render 'partials/secondary_navbar' %>
+      <%= render 'main_navbar' %>
+      <%= render 'secondary_navbar' %>
     <% else %>
-      <%= render 'partials/main_navbar' %>
+      <%= render 'main_navbar' %>
     <% end %>
 
     
     <section class="container-fluid">
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+    <% end %>
       <%= yield %>
     </section>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
