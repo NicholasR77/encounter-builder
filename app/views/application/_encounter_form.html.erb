@@ -1,5 +1,5 @@
 <%= form_for @encounter do |f| %>
-    <h3>New Encounter</h3>
+    <h3>Encounter</h3>
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, class: "form-control" %>
 
@@ -7,25 +7,25 @@
     <%= f.text_area :description, class: "form-control" %>
 
     <h3>PC's</h3>
-    <p>Existing PC's</p>
+    <h4>Existing PC's</h4>
     <%= f.collection_check_boxes :pc_ids, Pc.all, :id, :name do |pc_checkboxes| %>
         <%= pc_checkboxes.check_box %>
         <%= pc_checkboxes.label %>
         <br>
     <% end %>
-    <p>New PC</p>
+    <h4>New PC</h4>
     <%= f.fields_for :pcs, @encounter.pcs.build do |pc_fields| %>
         Name <%= pc_fields.text_field :name, class: "form-control"  %>
     <% end %>
     <br>
     <h3>NPC's</h3>
-    <p>Existing NPC's</p>
+    <h4>Existing NPC's</h4>
      <%= f.collection_check_boxes :npc_ids, Npc.all, :id, :name do |npc_checkboxes| %>
         <%= npc_checkboxes.check_box %>
         <%= npc_checkboxes.label %>
         <br>
     <% end %>
-    <p>New NPC</p>
+    <h4>New NPC</h4>
     <%= f.fields_for :npcs, @encounter.npcs.build do |npc_fields| %>
         Name <%= npc_fields.text_field :name, class: "form-control"  %>
     <% end %>

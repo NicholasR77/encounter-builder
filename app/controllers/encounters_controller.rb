@@ -1,4 +1,6 @@
 class EncountersController < ApplicationController
+  before_action :logged_in_user
+
   def index
     @encounters = Encounter.all
   end

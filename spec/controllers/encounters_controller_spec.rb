@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe EncountersController, type: :controller do
   describe 'handles the management of encounter' do
     before do
+      allow(controller).to receive(:logged_in_user).and_return(true)
       @encounter = FactoryBot.create(:encounter)
       @encounter_params = FactoryBot.attributes_for(:encounter)
     end
