@@ -1,3 +1,3 @@
 class PcsController < ApplicationController
-    before_action :logged_in_user
+    before_action :check_logged_in
 end
