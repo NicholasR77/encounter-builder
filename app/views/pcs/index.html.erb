@@ -1,0 +1,4 @@
+<%= @pcs.each do |pc| %>
+    <h3><%= link_to pc.name, pc_path(pc) %></h3>
+    <p><%= pc.description %></p>
+<% end %> 
