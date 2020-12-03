@@ -1,9 +1,9 @@
-<%= form_for @pc do |f| %>
+<%= form_for @item do |f| %>
     <%= f.label :name, "Name" %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name %>
 
     <%= f.label :description, "Description" %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.text_field :description %>
 
     <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>

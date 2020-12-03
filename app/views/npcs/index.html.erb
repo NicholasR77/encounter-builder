@@ -1,4 +1,4 @@
-<%= @npcs.each do |npc| %>
+<% @npcs.each do |npc| %>
     <h3><%= link_to npc.name, npc_path(npc) %></h3>
     <p><%= npc.description %></p>
 <% end %> 

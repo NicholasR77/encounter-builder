@@ -1,0 +1,5 @@
+<h2><%= @pc.name %></h2>
+<p><%= @pc.description %></p>
+
+<%= button_to "Edit PC", edit_pc_path(@pc), method: :get, class: "btn btn-primary" %>
+<%= button_to "Delete PC", pc_path(@pc), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>

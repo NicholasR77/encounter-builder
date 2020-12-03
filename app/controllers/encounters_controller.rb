@@ -15,12 +15,13 @@ class EncountersController < ApplicationController
   end
 
   def create
-    encounter = Encounter.new(encounter_params)
-    encounter.user_id = helpers.current_user.id
-    if encounter.save
-      redirect_to encounter_path(encounter)
+    @encounter = Encounter.new(encounter_params)
+    @encounter.user_id = helpers.current_user.id
+    
+    if @encounter.save
+      redirect_to encounter_path(@encounter)
     else
-      new_encounter_path
+      render :new
     end
   end
 
