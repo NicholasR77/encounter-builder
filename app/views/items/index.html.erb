@@ -1,4 +1,8 @@
-<%= @items.each do |item| %>
-    <h3><%= item.name %></h3>
-    <p><%= item.description %></p>
+<% if @items.empty?%>
+    <h3>Looks like you haven't created anything yet!
+<% else %>
+    <%= @items.each do |item| %>
+        <h3><%= item.name %></h3>
+        <p><%= item.description %></p>
+    <% end %>
 <% end %>

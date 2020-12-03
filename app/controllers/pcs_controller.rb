@@ -38,7 +38,7 @@ class PcsController < ApplicationController
     def destroy
         pc = Pc.find(params[:id])
         pc.destroy
-        flash.alert = 'Pc deleted succesfully.'
+        flash.alert = 'PC deleted succesfully.'
         redirect_to pcs_path
     end
 

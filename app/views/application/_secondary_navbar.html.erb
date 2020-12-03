@@ -1,16 +1,13 @@
-<nav class="secondary navbar navbar-expand navbar-dark bg-light">
-    <ul class="navbar-nav mr-auto">
+<nav class="secondary navbar navbar-expand bg-light">
+    <ul class="navbar-nav">
       <li class="nav-item">
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Menu
-          </button>
-          <div class="dropdown-menu">
-            <%= link_to  "Encounters", encounters_path, class: "dropdown-item" %>
-            <%= link_to  "PC's", pcs_path, class: "dropdown-item" %>
-            <%= link_to  "NPC's", npcs_path, class: "dropdown-item" %>
-          </div>
-        </div>
+         <%= link_to  "Encounters", encounters_path, class: "nav-link" %>
+      </li>
+       <li class="nav-item">
+         <%= link_to  "PCS", pcs_path, class: "nav-link" %>
+      </li>
+       <li class="nav-item">
+         <%= link_to  "NPCS", npcs_path, class: "nav-link" %>
       </li>
     </ul>
 </nav>

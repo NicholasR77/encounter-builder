@@ -1,4 +1,11 @@
-<% @npcs.each do |npc| %>
-    <h3><%= link_to npc.name, npc_path(npc) %></h3>
-    <p><%= npc.description %></p>
-<% end %> 
+<% if @npcs.empty?%>
+    <h2>Looks like you haven't created anything yet!</h2>
+    <%= button_to  "Create a New NPC", new_npc_path, method: :get, class: "btn btn-primary" %>
+<% else %>
+    <h2>Your NPCS</h2>
+    <% @npcs.each do |npc| %>
+        <h3><%= link_to npc.name, npc_path(npc) %></h3>
+        <p><%= npc.description %></p>
+    <% end %> 
+    <%= button_to  "Create a New NPC", new_npc_path, method: :get, class: "btn btn-primary" %>
+<% end %>

@@ -38,7 +38,7 @@ class NpcsController < ApplicationController
     def destroy
         npc = Npc.find(params[:id])
         npc.destroy
-        flash.alert = 'Npc deleted succesfully.'
+        flash.alert = 'NPC deleted succesfully.'
         redirect_to npcs_path
     end
 
