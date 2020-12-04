@@ -44,10 +44,9 @@ ActiveRecord::Schema.define(version: 2020_11_29_220839) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "pcs_id"
+    t.integer "pc_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["pcs_id"], name: "index_items_on_pcs_id"
   end
 
   create_table "npcs", force: :cascade do |t|

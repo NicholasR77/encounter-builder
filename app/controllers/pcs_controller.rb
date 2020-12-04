@@ -45,6 +45,6 @@ class PcsController < ApplicationController
     protected
 
     def pc_params
-        params.require(:pc).permit(:name, :description)
+        params.require(:pc).permit(:name, :description, item_ids:[])
     end
 end

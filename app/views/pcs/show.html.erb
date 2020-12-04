@@ -3,3 +3,13 @@
 
 <%= button_to "Edit PC", edit_pc_path(@pc), method: :get, class: "btn btn-primary" %>
 <%= button_to "Delete PC", pc_path(@pc), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+
+<h2>PC Item's</h2>
+<% if @pc.items.empty? %>
+    <h3>Looks like you haven't created anything yet!</h3>
+<% else %>
+    <% @pc.items.each do |item| %>
+        <h3><%= link_to item.name, pc_item_path(item) %></h3>
+        <p><%= item.description %></p>
+    <% end %>
+<% end %>

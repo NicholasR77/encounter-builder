@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :users
   resources :encounters
-  resources :items, only: [:index]
+  resources :items
 
   resources :pcs do
     resources :items

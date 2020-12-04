@@ -2,7 +2,7 @@
   <h2>Looks like you haven't created anything yet!</h2>
   <%= button_to  "Create a New PC", new_pc_path, method: :get, class: "btn btn-primary" %>
 <% else %>
-    <h2>Your PCS</h2>
+    <h2>Your PC's</h2>
     <% @pcs.each do |pc| %>
         <h3><%= link_to pc.name, pc_path(pc) %></h3>
         <p><%= pc.description %></p>

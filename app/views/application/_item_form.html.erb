@@ -1,9 +1,13 @@
 <%= form_for @item do |f| %>
+    <% if params[:pc_id] %>
+         <%= f.hidden_field :pc_id %>
+    <% end %>
+    
     <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
 
     <%= f.label :description, "Description" %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: "form-control" %>
 
     <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>
