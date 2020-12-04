@@ -1,0 +1,5 @@
+<h2><%= @npc.name %></h2>
+<p><%= @npc.description %></p>
+
+<%= button_to "Edit NPC", edit_npc_path(@npc), method: :get, class: "btn btn-primary" %>
+<%= button_to "Delete NPC", npc_path(@npc), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>

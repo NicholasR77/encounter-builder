@@ -8,10 +8,10 @@
     <ul class="navbar-nav mr-auto">
       <% if logged_in? %>
         <li class="nav-item">
-          <a>My Account</a>
+          <%= link_to 'My Account', user_path(current_user) %>
         </li>
         <li class="nav-item">
-          <%= link_to "Logout", '/logout', method: :post, data: { confirm: "Really?" } %>
+          <%= link_to "Logout", '/logout', method: :post, data: { confirm: "Are you sure you want to logout?" } %>
         </li>
       <% else %>
         <li class="nav-item">

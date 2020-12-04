@@ -1,8 +1,9 @@
 class EncountersController < ApplicationController
-  before_action :logged_in_user
+  before_action :check_logged_in
+  before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
   def index
-    @encounters = Encounter.all
+    @encounters = helpers.current_user.encounters
   end
 
   def show
@@ -14,11 +15,13 @@ class EncountersController < ApplicationController
   end
 
   def create
-    encounter = Encounter.new(encounter_params)
-    if encounter.save
-      redirect_to encounter_path(encounter)
+    @encounter = Encounter.new(encounter_params)
+    @encounter.user_id = helpers.current_user.id
+    
+    if @encounter.save
+      redirect_to encounter_path(@encounter)
     else
-      new_encounter_path
+      render :new
     end
   end
 
@@ -38,6 +41,7 @@ class EncountersController < ApplicationController
   def destroy
     encounter = Encounter.find(params[:id])
     encounter.destroy
+    flash.alert = 'Encounter deleted succesfully.'
     redirect_to encounters_path
   end
 
@@ -52,5 +56,12 @@ class EncountersController < ApplicationController
       npc_ids: [],
       npcs_attributes: [:name]
     )
+  end
+
+  def require_permission
+    unless helpers.current_user.id == Encounter.find(params[:id]).user_id
+      flash[:danger] = 'You do not have access to this page.'
+      redirect_to root_path
+    end
   end
 end

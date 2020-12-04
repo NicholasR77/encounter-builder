@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_020048) do
+ActiveRecord::Schema.define(version: 2020_11_29_220839) do
 
   create_table "encounter_npcs", force: :cascade do |t|
     t.integer "npc_id"
     t.integer "encounter_id"
+    t.integer "turn_order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["encounter_id"], name: "index_encounter_npcs_on_encounter_id"
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_020048) do
   create_table "encounter_pcs", force: :cascade do |t|
     t.integer "pc_id"
     t.integer "encounter_id"
+    t.integer "turn_order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["encounter_id"], name: "index_encounter_pcs_on_encounter_id"
@@ -39,22 +41,26 @@ ActiveRecord::Schema.define(version: 2020_10_28_020048) do
     t.index ["user_id"], name: "index_encounters_on_user_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "pc_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "npcs", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "encounter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["encounter_id"], name: "index_npcs_on_encounter_id"
   end
 
   create_table "pcs", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "encounter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["encounter_id"], name: "index_pcs_on_encounter_id"
   end
 
   create_table "users", force: :cascade do |t|
