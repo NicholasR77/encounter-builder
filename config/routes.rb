@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  resources :pcs
-  resources :npcs
-  resources :encounters
   resources :users
+  resources :encounters
+  resources :items
+
+  resources :pcs do
+    resources :items
+  end
+
+  resources :npcs do
+    resources :items
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'

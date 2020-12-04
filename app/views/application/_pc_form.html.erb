@@ -1,0 +1,16 @@
+<%= form_for @pc do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, class: "form-control" %>
+
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description, class: "form-control" %>
+
+    <h4>Select an Item That Belongs to This PC</h4>
+     <%= f.collection_check_boxes :item_ids, Item.all, :id, :name do |item_checkboxes| %>
+        <%= item_checkboxes.check_box %>
+        <%= item_checkboxes.label %>
+        <br>
+    <% end %>
+
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
+<% end %>

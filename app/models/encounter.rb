@@ -6,7 +6,5 @@ class Encounter < ApplicationRecord
   has_many :pcs, through: :encounter_pcs
 
   validates :name, presence: true
-
-  accepts_nested_attributes_for :npcs, :pcs, reject_if: proc { |attributes| attributes['name'].blank? }
-
+  accepts_nested_attributes_for :pcs, :npcs, reject_if: proc { |attributes| attributes['name'].blank? }
 end

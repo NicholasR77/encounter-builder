@@ -1,4 +1,15 @@
 <%= form_for @encounter do |f| %>
+     
+        <% if @encounter.errors.any? %>
+        <div id="error_explanation">
+            <div class="alert alert-danger">
+                <% @encounter.errors.full_messages.each do |msg| %>
+                     <%= msg %><br>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+
     <h3>Encounter</h3>
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, class: "form-control" %>
@@ -15,7 +26,7 @@
     <% end %>
     <h4>New PC</h4>
     <%= f.fields_for :pcs, @encounter.pcs.build do |pc_fields| %>
-        Name <%= pc_fields.text_field :name, class: "form-control"  %>
+        Name <%= pc_fields.text_field :name, class: "form-control" %>
     <% end %>
     <br>
     <h3>NPC's</h3>
