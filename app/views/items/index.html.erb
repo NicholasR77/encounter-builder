@@ -3,7 +3,7 @@
     <div class="model-navbar-outer">
         <div class="model-navbar-inner">
             <div class="left">
-                 <h3>Options</h3>
+                 <h4>Options</h4>
             </div>
             <div class="right">
                  <%= button_to  "Create a New Item", new_item_path, method: :get, class: "btn btn-primary" %>
@@ -11,7 +11,7 @@
         </div>
     </div>
     <% if @items.empty?%>
-        <h2>Looks like you haven't created anything yet!</h2>
+        <p>Looks like you haven't created anything yet!</p>
     <% else %>
        <div class="accordion" id="modelAccordion">
             <% @items.each do |item| %>

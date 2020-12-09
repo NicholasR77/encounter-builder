@@ -59,7 +59,6 @@ form {
 
 
 //Accordion
-
 .accordion {
     .accordion-item {
         h2 {
@@ -78,4 +77,16 @@ form {
 
 .accordion-button:not(.collapsed) {
     background-color: #fff !important;
+}
+
+
+//Models Stuff
+
+.inner-model-section {
+    margin-top: 20px;
+    h4 {
+        padding: 15px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
 }

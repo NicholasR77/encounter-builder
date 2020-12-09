@@ -1,50 +1,63 @@
-<h2>Name: <%= @encounter.name %></h2>
-<p>Description: <%= @encounter.description %></p>
-<%# Add Averages %>
-
-
-<h2>PC's</h2>
-<div class="accordion" id="accordionPcEncounter">
-    <% @encounter.pcs.each do |pc| %>
-          <div class="card">
-            <div class="card-header" id="headingPc<%= pc.id %>">
-                <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePc<%= pc.id %>" aria-expanded="true" aria-controls="collapsePc<%= pc.id %>">
-                        <%= pc.name %>
-                    </button>
-                </h2>
+<div class="col-8">
+    <h2><%= @encounter.name %></h2>
+    <div class="model-navbar-outer">
+        <div class="model-navbar-inner">
+            <div class="left">
+                <h4>Options</h4>
             </div>
-
-            <div id="collapsePc<%= pc.id %>" class="collapse" aria-labelledby="headingPc<%= pc.id %>" data-parent="#accordionPcEncounter">
-                <div class="card-body">
-                    <%= pc.description %>
-                </div>
-            </div>
+            <div class="right">
+                <%= button_to "Edit Encounter", edit_encounter_path(@encounter), method: :get, class: "btn btn-primary" %>
+                <%= button_to "Delete Encounter", encounter_path(@encounter), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+            </div>    
         </div>
-    <% end %>
-</div> 
- 
-<h2>NPC's</h2>
-<div class="accordion" id="accordionNpcEncounter">
-    <% @encounter.npcs.each do |npc| %>
-          <div class="card">
-            <div class="card-header" id="headingNpc<%= npc.id %>">
-                <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseNpc<%= npc.id %>" aria-expanded="true" aria-controls="collapseNpc<%= npc.id %>">
-                        <%= npc.name %>
-                    </button>
-                </h2>
+    </div>
+    <p>Description: <%= @encounter.description %></p>
+    <div class="inner-model-section">
+        <h4>PC's</h4>
+        <% if @encounter.pcs.empty?%>
+            <p>Looks like you haven't selected any PC's for this encounter yet!</p>
+        <% else %>
+        <div class="accordion" id="modelPCAccordion">
+                <% @encounter.pcs.each do |pc| %>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading<%= pc.id %><%= pc.name %>">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= pc.id %><%= pc.name %>" aria-expanded="true" aria-controls="collapse<%= pc.id %><%= pc.name %>">
+                                <%= pc.name %>
+                            </button>
+                        </h2>
+                        <div id="collapse<%= pc.id %><%= pc.name %>" class="accordion-collapse collapse" aria-labelledby="heading<%= pc.id %><%= pc.name %>" data-bs-parent="#modelPCAccordion">
+                            <div class="accordion-body">
+                                <p>Description<%= pc.description %></p>
+                                <%= button_to  "View PC", pc_path(pc), method: :get, class: "btn btn-primary" %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
             </div>
-
-            <div id="collapseNpc<%= npc.id %>" class="collapse" aria-labelledby="headingNpc<%= npc.id %>" data-parent="#accordionNpcEncounter">
-                <div class="card-body">
-                    <%= npc.description %>
-                </div>
+        <% end %>
+    </div>
+    <div class="inner-model-section">
+        <h4>NPC's</h4>
+        <% if @encounter.npcs.empty?%>
+            <p>Looks like you haven't selected any NPC's for this encounter yet!</p>
+        <% else %>
+        <div class="accordion" id="modelNPCAccordion">
+                <% @encounter.npcs.each do |npc| %>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading<%= npc.id %><%= npc.name %>">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= npc.id %><%= npc.name %>" aria-expanded="true" aria-controls="collapse<%= npc.id %><%= npc.name %>">
+                                <%= npc.name %>
+                            </button>
+                        </h2>
+                        <div id="collapse<%= npc.id %><%= npc.name %>" class="accordion-collapse collapse" aria-labelledby="heading<%= npc.id %><%= npc.name %>" data-bs-parent="#modelNPCAccordion">
+                            <div class="accordion-body">
+                                <p>Description<%= npc.description %></p>
+                                <%= button_to  "View NPC", npc_path(npc), method: :get, class: "btn btn-primary" %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
             </div>
-        </div>
-    <% end %>
-</div> 
-
-
-<%= button_to "Edit Encounter", edit_encounter_path(@encounter), method: :get, class: "btn btn-primary" %>
-<%= button_to "Delete Encounter", encounter_path(@encounter), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+        <% end %>
+    </div>      
+</div>

@@ -1,45 +1,38 @@
 <%= form_for @encounter do |f| %>
      
-        <% if @encounter.errors.any? %>
+    <% if @encounter.errors.any? %>
         <div id="error_explanation">
             <div class="alert alert-danger">
                 <% @encounter.errors.full_messages.each do |msg| %>
-                     <%= msg %><br>
+                        <%= msg %><br>
                 <% end %>
             </div>
         </div>
-        <% end %>
+    <% end %>
 
-    <h3>Encounter</h3>
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, class: "form-control" %>
 
     <%= f.label :description, "Descripion" %>
     <%= f.text_area :description, class: "form-control" %>
 
-    <h3>PC's</h3>
-    <h4>Existing PC's</h4>
-    <%= f.collection_check_boxes :pc_ids, Pc.all, :id, :name do |pc_checkboxes| %>
-        <%= pc_checkboxes.check_box %>
-        <%= pc_checkboxes.label %>
-        <br>
-    <% end %>
-    <h4>New PC</h4>
-    <%= f.fields_for :pcs, @encounter.pcs.build do |pc_fields| %>
-        Name <%= pc_fields.text_field :name, class: "form-control" %>
-    <% end %>
-    <br>
-    <h3>NPC's</h3>
-    <h4>Existing NPC's</h4>
-     <%= f.collection_check_boxes :npc_ids, Npc.all, :id, :name do |npc_checkboxes| %>
-        <%= npc_checkboxes.check_box %>
-        <%= npc_checkboxes.label %>
-        <br>
-    <% end %>
-    <h4>New NPC</h4>
-    <%= f.fields_for :npcs, @encounter.npcs.build do |npc_fields| %>
-        Name <%= npc_fields.text_field :name, class: "form-control"  %>
-    <% end %>
+    <div class="inner-model-section">
+        <h4>PC's</h4>
+        <%= f.collection_check_boxes :pc_ids, Pc.all, :id, :name do |pc_checkboxes| %>
+            <%= pc_checkboxes.check_box %>
+            <%= pc_checkboxes.label %>
+            <br>
+        <% end %>
+     </div>   
+
+    <div class="inner-model-section">
+        <h4>NPC's</h4>
+        <%= f.collection_check_boxes :npc_ids, Npc.all, :id, :name do |npc_checkboxes| %>
+            <%= npc_checkboxes.check_box %>
+            <%= npc_checkboxes.label %>
+            <br>
+        <% end %>
+    </div>    
 
     <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>
