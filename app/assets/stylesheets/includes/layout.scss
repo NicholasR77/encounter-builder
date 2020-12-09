@@ -1,12 +1,33 @@
 // Containers
 section.container-fluid {
-    margin-top: 20px;
+    padding-top: 20px;
+    position: relative;
+
+    // &::before {
+    //     background-image: url('https://ncazaleafestival.org/wp-content/uploads/2017/01/background-2.jpg');
+    //     background-position: center center;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     content: '';
+    //     height: 100vh;
+    //     left: 0;
+    //     opacity: 80%;
+    //     position: absolute;
+    //     top: 0;
+    //     width: 100vw;
+    //     z-index: -1;
+    // }
 }
 
 // Forms
-.form-group {
-    input {
-        margin-bottom: 10px;
+form {
+    input,
+    textarea {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
     }
 }
 
@@ -14,11 +35,58 @@ section.container-fluid {
 .btn-primary {
     background-color: $primaryColor !important;
     border-color: $primaryColor !important;
+    margin-top: 10px;
 }
 
 .btn {
     &:hover {
-        transition: opacity 500ms ease-in-out;
         opacity: 95%;
+        transition: opacity 500ms ease-in-out;
+    }
+}
+
+.button-row {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+
+    input {
+        margin-right: 10px !important;
+    }
+}
+
+
+//Accordion
+.accordion {
+    .accordion-item {
+        h2 {
+            margin-bottom: 0 !important;
+
+            button {
+                background-color: #fff;
+            }
+        }
+        
+        .accordion-collapse {
+            background-color: #fff;;
+        }
+    }  
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #fff !important;
+}
+
+
+//Models Stuff
+
+.inner-model-section {
+    margin-top: 20px;
+
+    h4 {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        margin-bottom: 20px;
+        padding: 15px 0;
     }
 }

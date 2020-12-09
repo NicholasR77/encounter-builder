@@ -1,10 +1,35 @@
-<% if @items.empty?%>
-    <h2>Looks like you haven't created anything yet!</h2>
-<% else %>
-    <h2>Your Item's</h2>
-    <% @items.each do |item| %>
-        <h3><%= link_to item.name, item_path(item) %></h3>
-        <p><%= item.description %></p>
+<div class="col-8">
+    <h2>Your Items</h2>
+    <div class="model-navbar-outer">
+        <div class="model-navbar-inner">
+            <div class="left">
+                 <h4>Options</h4>
+            </div>
+            <div class="right">
+                 <%= button_to  "Create a New Item", new_item_path, method: :get, class: "btn btn-primary" %>
+            </div>    
+        </div>
+    </div>
+    <% if @items.empty?%>
+        <p>Looks like you haven't created anything yet!</p>
+    <% else %>
+       <div class="accordion" id="modelAccordion">
+            <% @items.each do |item| %>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading<%= item.id %>">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= item.id %>" aria-expanded="true" aria-controls="collapse<%= item.id %>">
+                            <%= item.name %> (<%= item.rarity %>)
+                        </button>
+                    </h2>
+                    <div id="collapse<%= item.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= item.id %>" data-bs-parent="#modelAccordion">
+                        <div class="accordion-body">
+                            <p>Description: <%= item.description %></p>
+                            <%= button_to  "View Item", item_path(item), method: :get, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
     <% end %>
-    <%= button_to  "Create a New Item", new_item_path, method: :get, class: "btn btn-primary" %>
-<% end %>
+</div>
+

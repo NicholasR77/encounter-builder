@@ -1,6 +1,17 @@
-<h2>My Account</h2>
-<p>First Name: <%= @user.first_name %></p>
-<p>Last Name: <%= @user.last_name %></p>
-<p>Email: <%= @user.email %></p>
-<%= button_to "Edit Account", edit_user_path(@user), method: :get, class: "btn btn-primary" %>
-<%= button_to "Delete Account", user_path(@user), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+<div class="col-8">
+    <h2>My Account</h2>
+    <div class="model-navbar-outer">
+        <div class="model-navbar-inner">
+            <div class="left">
+                <h4>Options</h4>
+            </div>
+            <div class="right">
+                <%= button_to "Edit Account", edit_user_path(@user), method: :get, class: "btn btn-primary" %>
+                <%= button_to "Delete Account", user_path(@user), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+            </div>    
+        </div>
+    </div>
+    <p>First Name: <%= @user.first_name %></p>
+    <p>Last Name: <%= @user.last_name %></p>
+    <p>Email: <%= @user.email %></p>
+</div>

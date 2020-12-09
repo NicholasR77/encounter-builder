@@ -1,15 +1,39 @@
-<h2><%= @pc.name %></h2>
-<p><%= @pc.description %></p>
-
-<%= button_to "Edit PC", edit_pc_path(@pc), method: :get, class: "btn btn-primary" %>
-<%= button_to "Delete PC", pc_path(@pc), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
-
-<h2>PC Item's</h2>
-<% if @pc.items.empty? %>
-    <h3>Looks like you haven't created anything yet!</h3>
-<% else %>
-    <% @pc.items.each do |item| %>
-        <h3><%= link_to item.name, pc_item_path(item) %></h3>
-        <p><%= item.description %></p>
-    <% end %>
-<% end %>
+<div class="col-8">
+    <h2><%= @pc.name %></h2>
+    <div class="model-navbar-outer">
+        <div class="model-navbar-inner">
+            <div class="left">
+                <h4>Options</h4>
+            </div>
+            <div class="right">
+                <%= button_to "Edit PC", edit_pc_path(@pc), method: :get, class: "btn btn-primary" %>
+                <%= button_to "Delete PC", pc_path(@pc), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+            </div>    
+        </div>
+    </div>
+    <p>Description: <%= @pc.description %></p>
+    <div class="inner-model-section">
+        <h4>Items</h4>
+        <% if @pc.items.empty?%>
+            <p>Looks like you haven't added an item to this PC yet!</p>
+        <% else %>
+        <div class="accordion" id="modelAccordion">
+                <% @pc.items.each do |item| %>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading<%= item.id %>">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= item.id %>" aria-expanded="true" aria-controls="collapse<%= item.id %>">
+                                <%= item.name %> (<%= item.rarity %>)
+                            </button>
+                        </h2>
+                        <div id="collapse<%= item.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= item.id %>" data-bs-parent="#modelAccordion">
+                            <div class="accordion-body">
+                                <p>Description: <%= item.description %></p>
+                                <%= button_to  "View Item", item_path(item), method: :get, class: "btn btn-primary" %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>   
+</div>

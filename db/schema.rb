@@ -44,23 +44,32 @@ ActiveRecord::Schema.define(version: 2020_11_29_220839) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "notes"
+    t.string "rarity"
+    t.integer "cost"
     t.integer "pc_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "npcs", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_npcs_on_user_id"
   end
 
   create_table "pcs", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_pcs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

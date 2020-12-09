@@ -1,8 +1,19 @@
 <%= form_for @npc do |f| %>
+
+    <% if @npc.errors.any? %>
+        <div id="error_explanation">
+            <div class="alert alert-danger">
+                <% @npc.errors.full_messages.each do |msg| %>
+                        <%= msg %><br>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, class: "form-control" %>
 
-    <%= f.label :description, "Description" %>
+    <%= f.label :description, "Description: " %>
     <%= f.text_area :description, class: "form-control" %>
 
     <%= f.submit 'Submit', class: "btn btn-primary" %>
