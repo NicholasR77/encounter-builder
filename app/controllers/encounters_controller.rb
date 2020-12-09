@@ -1,9 +1,10 @@
 class EncountersController < ApplicationController
   before_action :check_logged_in
+  before_action :check_params_id, only: [:show, :edit]
   before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
   def index
-    @encounters = helpers.current_user.encounters
+    @encounters = helpers.current_user.encounters.ordered_by_name_asc
   end
 
   def show
@@ -58,6 +59,13 @@ class EncountersController < ApplicationController
       npc_ids: [],
       npcs_attributes: [:name]
     )
+  end
+
+  def check_params_id
+    unless Encounter.exists?(id: params[:id])
+        flash[:danger] = 'Encounter not found.'
+        redirect_to root_path
+    end
   end
 
   def require_permission
