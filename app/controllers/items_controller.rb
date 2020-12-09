@@ -38,8 +38,10 @@ class ItemsController < ApplicationController
 
     def create
         @item = Item.new(item_params)
+        @item.user_id = helpers.current_user.id
         if @item.save
             redirect_to item_path(@item)
+            flash.alert = 'Item created succesfully.'
         else
             render :new
         end
@@ -63,6 +65,7 @@ class ItemsController < ApplicationController
         @item = Item.find(params[:id])
         if @item.update(item_params)
             redirect_to item_path(@item)
+            flash.alert = 'Item updated succesfully.'
         else
             render :edit
         end
@@ -71,7 +74,7 @@ class ItemsController < ApplicationController
     def destroy
         item = Item.find(params[:id])
         item.destroy
-        flash.alert = 'Encounter deleted succesfully.'
+        flash.alert = 'Item deleted succesfully.'
         redirect_to items_path
     end
 

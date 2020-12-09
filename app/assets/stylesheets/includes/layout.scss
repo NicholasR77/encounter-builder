@@ -36,7 +36,6 @@ form {
     background-color: $primaryColor !important;
     border-color: $primaryColor !important;
     margin-top: 10px;
-    padding: 10px 40px !important;
 }
 
 .btn {
@@ -84,9 +83,10 @@ form {
 
 .inner-model-section {
     margin-top: 20px;
+
     h4 {
-        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         margin-bottom: 20px;
-        border-bottom: 1px solid rgba(0,0,0,.125);
+        padding: 15px 0;
     }
 }

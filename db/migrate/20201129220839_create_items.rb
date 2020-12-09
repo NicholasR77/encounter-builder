@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :rarity
       t.integer :cost
       t.integer :pc_id
+      t.belongs_to :user
       t.timestamps
     end
   end

@@ -1,5 +1,6 @@
 class PcsController < ApplicationController
     before_action :check_logged_in
+    before_action :require_permission, only: [:show, :edit, :update, :destroy]
 
     def index
         @pcs = Pc.all
@@ -14,11 +15,13 @@ class PcsController < ApplicationController
     end
 
     def create
-        pc = Pc.new(pc_params)
-        if pc.save
-            redirect_to pc_path(pc)
+        @pc = Pc.new(pc_params)
+        @pc.user_id = helpers.current_user.id
+        if @pc.save
+            redirect_to pc_path(@pc)
+            flash.alert = 'PC created succesfully.'
         else
-            redirect_to new_pc_path
+            render :new
         end
     end
 
@@ -27,11 +30,12 @@ class PcsController < ApplicationController
     end
 
     def update
-        pc = Pc.find(params[:id])
-        if pc.update(pc_params)
-            redirect_to pc_path(pc)
+        @pc = Pc.find(params[:id])
+        if @pc.update(pc_params)
+            redirect_to pc_path(@pc)
+            flash.alert = 'PC updated succesfully.'
         else
-            redirect_to edit_pc_path(pc)
+            render :edit
         end
     end
 
@@ -47,4 +51,11 @@ class PcsController < ApplicationController
     def pc_params
         params.require(:pc).permit(:name, :description, item_ids:[])
     end
+
+    def require_permission
+        unless helpers.current_user.id == Pc.find(params[:id]).user_id
+          flash[:danger] = 'You do not have access to this page.'
+          redirect_to root_path
+        end
+      end
 end

@@ -14,11 +14,13 @@ class NpcsController < ApplicationController
     end
 
     def create
-        npc = Npc.new(npc_params)
-        if npc.save
-            redirect_to npc_path(npc)
+        @npc = Npc.new(npc_params)
+        @npc.user_id = helpers.current_user.id
+        if @npc.save
+            redirect_to npc_path(@npc)
+            flash.alert = 'NPC created succesfully.'
         else
-            redirect_to new_npc_path
+            render :new
         end
     end
 
@@ -27,11 +29,12 @@ class NpcsController < ApplicationController
     end
 
     def update
-        npc = Npc.find(params[:id])
-        if npc.update(npc_params)
-            redirect_to npc_path(npc)
+        @npc = Npc.find(params[:id])
+        if @npc.update(npc_params)
+            redirect_to npc_path(@npc)
+            flash.alert = 'NPC updated succesfully.'
         else
-            redirect_to edit_npc_path(npc)
+            render :edit
         end
     end
 

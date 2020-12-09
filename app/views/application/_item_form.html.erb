@@ -1,4 +1,15 @@
 <%= form_for @item do |f| %>
+
+    <% if @item.errors.any? %>
+        <div id="error_explanation">
+            <div class="alert alert-danger">
+                <% @item.errors.full_messages.each do |msg| %>
+                        <%= msg %><br>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+
     <% if params[:pc_id] %>
          <%= f.hidden_field :pc_id %>
     <% end %>
@@ -6,7 +17,7 @@
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, class: "form-control" %>
 
-    <%= f.label :description, "Description" %>
+    <%= f.label :description, "Description: " %>
     <%= f.text_area :description, class: "form-control" %>
 
     <%= f.label :notes, "Notes" %>
@@ -16,7 +27,7 @@
     <%= f.text_field :rarity, class: "form-control" %>
 
     <%= f.label :cost, "Cost" %>
-    <%= f.number_field :cost, step: 10, class: "form-control" %>
+    <%= f.number_field :cost, class: "form-control" %>
 
     <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>

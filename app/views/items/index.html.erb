@@ -23,7 +23,7 @@
                     </h2>
                     <div id="collapse<%= item.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= item.id %>" data-bs-parent="#modelAccordion">
                         <div class="accordion-body">
-                            <p>Description<%= item.description %></p>
+                            <p>Description: <%= item.description %></p>
                             <%= button_to  "View Item", item_path(item), method: :get, class: "btn btn-primary" %>
                         </div>
                     </div>

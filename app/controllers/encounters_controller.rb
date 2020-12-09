@@ -20,6 +20,7 @@ class EncountersController < ApplicationController
     
     if @encounter.save
       redirect_to encounter_path(@encounter)
+      flash.alert = 'Encounter created succesfully.'
     else
       render :new
     end
@@ -30,11 +31,12 @@ class EncountersController < ApplicationController
   end
 
   def update
-    encounter = Encounter.find(params[:id])
-    if encounter.update(encounter_params)
-      redirect_to encounter_path(encounter)
+    @encounter = Encounter.find(params[:id])
+    if @encounter.update(encounter_params)
+      redirect_to encounter_path(@encounter)
+      flash.alert = 'Encounter updated succesfully.'
     else
-      redirect_to edit_encounter_path(encounter)
+      render :edit
     end
   end
 

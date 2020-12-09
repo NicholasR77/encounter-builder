@@ -15,7 +15,7 @@
     <div class="inner-model-section">
         <h4>Items</h4>
         <% if @pc.items.empty?%>
-            <p>Looks like you haven't created anything yet!</p>
+            <p>Looks like you haven't added an item to this PC yet!</p>
         <% else %>
         <div class="accordion" id="modelAccordion">
                 <% @pc.items.each do |item| %>
@@ -27,7 +27,7 @@
                         </h2>
                         <div id="collapse<%= item.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= item.id %>" data-bs-parent="#modelAccordion">
                             <div class="accordion-body">
-                                <p>Description<%= item.description %></p>
+                                <p>Description: <%= item.description %></p>
                                 <%= button_to  "View Item", item_path(item), method: :get, class: "btn btn-primary" %>
                             </div>
                         </div>
