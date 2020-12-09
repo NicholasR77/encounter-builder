@@ -7,7 +7,16 @@
     <%= f.text_field :name, class: "form-control" %>
 
     <%= f.label :description, "Description" %>
-    <%= f.text_field :description, class: "form-control" %>
+    <%= f.text_area :description, class: "form-control" %>
+
+    <%= f.label :notes, "Notes" %>
+    <%= f.text_area :notes, class: "form-control" %>
+
+    <%= f.label :rarity, "Rarity" %>
+    <%= f.text_field :rarity, class: "form-control" %>
+
+    <%= f.label :cost, "Cost" %>
+    <%= f.number_field :cost, step: 10, class: "form-control" %>
 
     <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>

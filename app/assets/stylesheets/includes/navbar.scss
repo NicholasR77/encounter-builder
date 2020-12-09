@@ -1,8 +1,8 @@
 .navbar {
     .navbar-title {
+        color: $secondaryFontColor;
         font-size: 1.5em;
         font-weight: secondaryFontWeight;
-        color: $secondaryFontColor;
         @media all and (min-width: $lrg) {
             font-size: 2em;
         }
@@ -11,15 +11,21 @@
 
 .navbar.main {
     background-color: $secondaryColor !important;
+
     .navbar-nav {
         margin: 20px 0;
     }
+
     .nav-item {
-        color: $secondaryFontColor;
-        padding: 10px 0;
         border-top: 1px solid white;
+        padding: 10px 0;
+
         &:last-child {
             border-bottom: 1px solid white;
+        }
+
+        a {
+            color: $secondaryFontColor;
         }
     }
 }
@@ -29,5 +35,31 @@
         flex-flow: row wrap;
         justify-content: flex-start;
         width: 100%;
+
+        .nav-item {
+            a {
+                color: $primaryColor;
+            }
+        }
+    }
+}
+
+.model-navbar-outer {
+    margin-bottom: 20px;
+    .model-navbar-inner {
+        border-bottom: 1px solid rgba(0,0,0,.125);
+        border-top: 1px solid rgba(0,0,0,.125);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        .right {
+            display: flex;
+            flex-flow: row nowrap;
+            .btn {
+                margin: 0 !important;
+                margin-left: 5px !important;
+            }
+        }   
     }
 }

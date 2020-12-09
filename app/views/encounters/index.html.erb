@@ -2,7 +2,7 @@
   <h2>Looks like you haven't created anything yet!</h2>
   <%= button_to  "Create a New Encounter", new_encounter_path, method: :get, class: "btn btn-primary" %>
 <% else %>
-  <h2>Your Encounter's</h2>
+  <h2>Your Encounters</h2>
   <% @encounters.each do |encounter| %>
     <h3><%= link_to  encounter.name, encounter_path(encounter) %></h3>
     <p><%= encounter.description %></p>

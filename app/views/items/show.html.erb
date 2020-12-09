@@ -1,5 +1,18 @@
-<h2><%= @item.name %></h2>
-<p><%= @item.description %></p>
-
-<%= button_to "Edit Item", edit_item_path(@item), method: :get, class: "btn btn-primary" %>
-<%= button_to "Delete Item", item_path(@item), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+<div class="col-8">
+    <h2><%= @item.name %></h2>
+    <div class="model-navbar-outer">
+        <div class="model-navbar-inner">
+            <div class="left">
+                 <h3>Options</h3>
+            </div>
+            <div class="right">
+                 <%= button_to "Edit Item", edit_item_path(@item), method: :get, class: "btn btn-primary" %>
+        <%= button_to "Delete Item", item_path(@item), method: :delete, class: "btn btn-primary",  data: { confirm: "Are you sure you want to delete?" } %>
+            </div>    
+        </div>
+    </div>
+    <p>Description: <%= @item.description %></p>
+    <p>Notes: <%= @item.notes %></p>
+    <p>Rarity: <%= @item.rarity %></p>
+    <p>Cost: <%= @item.cost %></p>
+</div>
