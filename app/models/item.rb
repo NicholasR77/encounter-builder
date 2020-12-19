@@ -3,5 +3,7 @@ class Item < ApplicationRecord
     validates :name, presence: true
 
     scope :ordered_by_name_asc, -> { order(name: :asc) }
-    scope :ordered_by_name_desc, -> { order(name: :desc) } 
+    scope :ordered_by_name_desc, -> { order(name: :desc) }
+
+    scope :find_items, -> (name) { where('name LIKE ?', "%#{name}%") }
 end

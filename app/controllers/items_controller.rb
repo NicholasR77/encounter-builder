@@ -14,6 +14,8 @@ class ItemsController < ApplicationController
                 flash[:danger] = 'You do not have access to this page.'
                 redirect_to root_path
             end
+        elsif params[:query]
+            @items = Item.find_items(params[:query])
         else
             @items = helpers.current_user.items.ordered_by_name_asc
         end

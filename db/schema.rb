@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_220839) do
   create_table "encounter_npcs", force: :cascade do |t|
     t.integer "npc_id"
     t.integer "encounter_id"
-    t.integer "turn_order"
+    t.integer "turn_order", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["encounter_id"], name: "index_encounter_npcs_on_encounter_id"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_220839) do
   create_table "encounter_pcs", force: :cascade do |t|
     t.integer "pc_id"
     t.integer "encounter_id"
-    t.integer "turn_order"
+    t.integer "turn_order", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["encounter_id"], name: "index_encounter_pcs_on_encounter_id"
