@@ -6,6 +6,14 @@
                  <h4>Options</h4>
             </div>
             <div class="right">
+                
+
+                <%= form_with url: items_path, method: :get do |form| %>
+                    <%= form.label :query, "Search for:" %>
+                    <%= form.text_field :query %>
+                    <%= form.submit "Search" %>
+                <% end %>
+
                  <%= button_to  "Create a New Item", new_item_path, method: :get, class: "btn btn-primary" %>
             </div>    
         </div>

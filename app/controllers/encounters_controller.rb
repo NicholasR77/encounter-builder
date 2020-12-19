@@ -16,8 +16,8 @@ class EncountersController < ApplicationController
   end
 
   def create
-    @encounter = Encounter.new(encounter_params)
-    @encounter.user_id = helpers.current_user.id
+    # Try to refactor and use throughout the app
+    @encounter = helpers.current_user.encounters.build(encounter_params)
     
     if @encounter.save
       redirect_to encounter_path(@encounter)
@@ -48,16 +48,27 @@ class EncountersController < ApplicationController
     redirect_to encounters_path
   end
 
+  def show_combat
+    @encoutner = Encounter.find(params[:id])
+  end
+
+  def new_combat
+    @encounter = Encounter.find(params[:id])
+  end
+
+  def create_combat
+    
+  end
+
   protected
 
   def encounter_params
     params.require(:encounter).permit(
       :name,
       :description,
+      encounter_npcs_attributes: [:turn_order, :id],
       pc_ids: [],
-      pcs_attributes: [:name],
-      npc_ids: [],
-      npcs_attributes: [:name]
+      npc_ids: []
     )
   end
 
