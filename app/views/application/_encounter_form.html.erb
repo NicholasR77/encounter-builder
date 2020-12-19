@@ -21,7 +21,6 @@
         <%= f.collection_check_boxes :pc_ids, Pc.all, :id, :name do |pc_checkboxes| %>
             <%= pc_checkboxes.check_box %>
             <%= pc_checkboxes.label %>
-            <br>
         <% end %>
      </div>   
 
@@ -32,7 +31,15 @@
             <%= npc_checkboxes.label %>
             <br>
         <% end %>
-    </div>    
+    </div>
+
+    <div class="inner-model-section">
+        <h4>NPC Combat Order</h4>
+        <%= f.fields_for :encounter_npcs do |encounter_npc| %>
+            <%= encounter_npc.object.npc.name %>
+            <%= encounter_npc.number_field :turn_order %>
+        <% end %>
+    </div>
 
     <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>
